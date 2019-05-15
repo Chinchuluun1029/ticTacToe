@@ -1,3 +1,7 @@
+//
+//
+//
+
 #include <iostream>
 
 
@@ -19,7 +23,9 @@ class Player {
 /*
  * TicTacToe Class
  *
- * Class definition of tic tac toe game.
+ * Class definition of tic tac toe game. Has private fields of BOARD_SIZE,
+ * and a two-dimensional array of board size. Currently only playable on 3 by 3 board.
+ *
  */
 class TicTacToe {
     public:
@@ -27,18 +33,76 @@ class TicTacToe {
         //Constructor - builds the board with empty (-) characters
         TicTacToe() { clearBoard(); }
 
+        /*
+        * printBoard():
+        *
+        * Prints the current board with characters of both players, (x, o) and empty slots (-).
+        *
+        */
         void printBoard();
+
+        /*
+        * makeMove(char element, size_t x, size_t y):
+        *
+        * Given char of current player and x, y coordinates, places char on those coordinates.
+        *
+        */
         void makeMove(char element, size_t x, size_t y);
+
+        /*
+        * clearBoard():
+        *
+        * Removes all x and o elements and makes all slots empty (-).
+        *
+        */
         void clearBoard();
+
+        /*
+        * gameResult():
+        *
+        * Returns a size_t indicating if the current game is won, tied or continuing.
+        * A game is won when a player successfully places 3 characters horizontally, vertically or
+        * diagonally on the board. If the last player to place a char has won, returns 2.
+        * If the game is tied, returns 1. If the game is ongoing, returns 0.
+        *
+        */
         size_t gameResult();
+
+        /*
+        * chooseChar():
+        *
+        * Asks a player to choose a character of either x or o. Asks until a user inputs a suitable char
+        * and returns the value.
+        *
+        */
         char chooseChar();
-        void assignChars(Player &playerOne, Player &playerTwo);
+
+        /*
+        * isFull():
+        *
+        * Returns boolean value of if the board is filled with players' chars and no empty slot is left.
+        *
+        */
         bool isFull();
+
+        /*
+        * isOccupied():
+        *
+        * Returns boolean value of it the current point at x and y parameters is occupied by player's char
+        *
+        */
         bool isOccupied(size_t x, size_t y);
+
+
         void placeChars(Player &playerOne, Player &playerTwo);
 
+
+        void assignChars(Player &playerOne, Player &playerTwo);
+
+
     private:
-        const static size_t BOARD_SIZE = 3;
+
+        const static size_t BOARD_SIZE = 3; //Const variable of one length/size
         char board[BOARD_SIZE][BOARD_SIZE];
 
 };
@@ -56,97 +120,21 @@ int main() {
     return 0;
 }
 
-void TicTacToe::assignChars(Player &playerOne, Player &playerTwo) {
-    playerOne.setChar(chooseChar());
-
-    if (playerOne.getChar() == 'x') {
-        playerTwo.setChar('o');
-    } else {
-        playerTwo.setChar('x');
-    }
-}
-
-void TicTacToe::placeChars(Player &playerOne, Player &playerTwo) {
-    size_t turn = 0;
-    while (!isFull()) {
-        size_t x, y;
-
-        if (turn % 2 == 0) {
-            std::cout << "Player 1 choose x and y: " << std::endl;
-
-            std::cin >> x;
-            while (x > 2 || x < 0) {
-                std::cout << "Please enter x coordinate between 0-2" << std::endl;
-                std::cin >> x;
-            }
-
-            std::cin >> y;
-            while (y > 2 || y < 0) {
-                std::cout << "Please enter y coordinate between 0-2" << std::endl;
-                std::cin >> y;
-            }
-
-            while (isOccupied(x, y)) {
-                std::cout << "Coordinate is already occupied" << std::endl;
-                placeChars(playerOne, playerTwo);
-            }
-
-            makeMove(playerOne.getChar(), x, y);
-
-            if (gameResult() == 2) {
-                std::cout << "Player 1 won!" << std::endl;
-                exit(1);
-            }
-
-        } else {
-            std::cout << "Player 2 choose x and y: " << std::endl;
-            std::cin >> x;
-            while (x > 2 || x < 0) {
-                std::cout << "Please enter x coordinate between 0-2" << std::endl;
-                std::cin >> x;
-            }
-
-            std::cin >> y;
-            while (y > 2 || y < 0) {
-                std::cout << "Please enter y coordinate between 0-2" << std::endl;
-                std::cin >> y;
-            }
-
-            while (isOccupied(x, y)) {
-                std::cout << "Coordinate is already occupied" << std::endl;
-                placeChars(playerOne, playerTwo);
-                std::cin >> x;
-                std::cin >> y;
-                //todo: fix logic here
-            }
-
-            makeMove(playerTwo.getChar(), x, y);
-
-            if (gameResult() == 2) {
-                std::cout << "Player 2 won!" << std::endl;
-                exit(1);
-            }
-        }
-
-
-
-        if (gameResult() == 1) {
-            std::cout << "It's a tie!" << std::endl;
-            exit(1);
-        }
-        std::cout << std::endl;
-
-        ++turn;
-    }
-}
-
-//Player methods:
+//Player getter/setters:
 
 void Player::setChar(char input) { this->chosenChar = input; }
 char Player::getChar() { return chosenChar; }
 
+
 //TicTacToe methods:
 
+
+/*
+ * printBoard():
+ *
+ * Prints the current board with characters of both players, (x, o) and empty slots (-).
+ *
+ */
 void TicTacToe::printBoard() {
     for (size_t i = 0; i < BOARD_SIZE; ++i) {
         for (size_t j = 0; j < BOARD_SIZE; ++j) {
@@ -156,12 +144,23 @@ void TicTacToe::printBoard() {
     }
 }
 
-
+/*
+ * makeMove(char element, size_t x, size_t y):
+ *
+ * Given element of current player and x, y coordinates, places the char on those coordinates.
+ *
+ */
 void TicTacToe::makeMove(char element, size_t x, size_t y) {
     board[x][y] = element;
     printBoard();
 }
 
+/*
+ * clearBoard():
+ *
+ * Removes all x and o elements and makes all slots empty (-).
+ *
+ */
 void TicTacToe::clearBoard() {
     for (size_t i = 0; i < BOARD_SIZE; ++i) {
         for (size_t j = 0; j < BOARD_SIZE; ++j) {
@@ -170,6 +169,15 @@ void TicTacToe::clearBoard() {
     }
 }
 
+/*
+ * gameResult():
+ *
+ * Returns a size_t indicating if the current game is won, tied or continuing.
+ * A game is won when a player successfully places 3 characters horizontally, vertically or
+ * diagonally on the board. If the last player to place a char has won, returns 2.
+ * If the game is tied, returns 1. If the game is ongoing, returns 0.
+ *
+ */
 size_t TicTacToe::gameResult() {
 
     for (size_t i = 0; i < BOARD_SIZE; ++i) {
@@ -196,19 +204,32 @@ size_t TicTacToe::gameResult() {
     return 0;
 }
 
+/*
+ * chooseChar():
+ *
+ * Asks a player to choose a character of either x or o. Asks until a user inputs a suitable char
+ * and returns the value.
+ *
+ */
 char TicTacToe::chooseChar() {
     std::string input;
     std::cout << "X or O?" << std::endl;
     std::cin >> input;
 
     while ((input[0] != 'x') && (input[0] != 'X') && (input[0] != 'o') && (input[0] != 'O')) {
-        std::cout << "Invalid character." << std::endl;
+        std::cout << "Invalid character. Choose again." << std::endl;
         std::cin >> input;
     }
 
     return input[0];
 }
 
+/*
+ * isFull():
+ *
+ * Returns boolean value of if the board is filled with players' chars and no empty slot is left.
+ *
+ */
 bool TicTacToe::isFull() {
     size_t boardFull = 0;
     for (size_t i = 0; i < BOARD_SIZE; ++i) {
@@ -222,6 +243,99 @@ bool TicTacToe::isFull() {
     return (boardFull == 9);
 }
 
+/*
+ * isOccupied():
+ *
+ * Returns boolean value of it the current point at x and y parameters is occupied by player's char
+ *
+ */
 bool TicTacToe::isOccupied(size_t x, size_t y) {
     return (board[x][y] != '-');
+}
+
+
+void TicTacToe::placeChars(Player &playerOne, Player &playerTwo) {
+    size_t turn = 0;
+    while (!isFull()) {
+        size_t x, y;
+
+        if (turn % 2 == 0) {
+            std::cout << "Player 1 choose x and y: " << std::endl;
+
+            std::cin >> x;
+            while (x > 2 || x < 0) {
+                std::cout << "Please enter x coordinate between 0-2" << std::endl;
+                std::cin >> x;
+            }
+
+            std::cin >> y;
+            while (y > 2 || y < 0) {
+                std::cout << "Please enter y coordinate between 0-2" << std::endl;
+                std::cin >> y;
+            }
+
+            while (isOccupied(x, y)) {
+                std::cout << "Coordinate is already occupied\n" << std::endl;
+                placeChars(playerOne, playerTwo);
+            }
+
+            makeMove(playerOne.getChar(), x, y);
+
+            if (gameResult() == 2) {
+                std::cout << "\nPlayer 1 won!" << std::endl;
+                exit(1);
+            }
+
+        } else {
+            std::cout << "Player 2 choose x and y: " << std::endl;
+            std::cin >> x;
+            while (x > 2 || x < 0) {
+                std::cout << "Please enter x coordinate between 0-2" << std::endl;
+                std::cin >> x;
+            }
+
+            std::cin >> y;
+            while (y > 2 || y < 0) {
+                std::cout << "Please enter y coordinate between 0-2" << std::endl;
+                std::cin >> y;
+            }
+
+            while (isOccupied(x, y)) {
+                std::cout << "Coordinate is already occupied\nChoose another coordinate\n";
+                std::cin >> x;
+                std::cin >> y;
+            }
+
+            makeMove(playerTwo.getChar(), x, y);
+
+            if (gameResult() == 2) {
+                std::cout << "\nPlayer 2 won!" << std::endl;
+                exit(1);
+            }
+        }
+
+        if (gameResult() == 1) {
+            std::cout << "It's a tie!" << std::endl;
+            exit(1);
+        }
+
+        std::cout << std::endl;
+
+        ++turn;
+    }
+}
+
+/*
+ * assignChars(Player &playerOne, Player &playerTwo):
+ *
+ *
+ */
+void TicTacToe::assignChars(Player &playerOne, Player &playerTwo) {
+    playerOne.setChar(chooseChar());
+
+    if (playerOne.getChar() == 'x') {
+        playerTwo.setChar('o');
+    } else {
+        playerTwo.setChar('x');
+    }
 }
