@@ -123,6 +123,33 @@ tictactoe/fast:
 	$(MAKE) -f CMakeFiles/tictactoe.dir/build.make CMakeFiles/tictactoe.dir/build
 .PHONY : tictactoe/fast
 
+TicTacToe.o: TicTacToe.cpp.o
+
+.PHONY : TicTacToe.o
+
+# target to build an object file
+TicTacToe.cpp.o:
+	$(MAKE) -f CMakeFiles/tictactoe.dir/build.make CMakeFiles/tictactoe.dir/TicTacToe.cpp.o
+.PHONY : TicTacToe.cpp.o
+
+TicTacToe.i: TicTacToe.cpp.i
+
+.PHONY : TicTacToe.i
+
+# target to preprocess a source file
+TicTacToe.cpp.i:
+	$(MAKE) -f CMakeFiles/tictactoe.dir/build.make CMakeFiles/tictactoe.dir/TicTacToe.cpp.i
+.PHONY : TicTacToe.cpp.i
+
+TicTacToe.s: TicTacToe.cpp.s
+
+.PHONY : TicTacToe.s
+
+# target to generate assembly for a file
+TicTacToe.cpp.s:
+	$(MAKE) -f CMakeFiles/tictactoe.dir/build.make CMakeFiles/tictactoe.dir/TicTacToe.cpp.s
+.PHONY : TicTacToe.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... tictactoe"
+	@echo "... TicTacToe.o"
+	@echo "... TicTacToe.i"
+	@echo "... TicTacToe.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

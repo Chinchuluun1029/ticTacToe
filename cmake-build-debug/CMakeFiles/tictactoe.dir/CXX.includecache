@@ -6,7 +6,17 @@
 
 #IncludeRegexTransform: 
 
+/Users/marlamunkh-achit/Desktop/tictactoe/Player.h
+
+/Users/marlamunkh-achit/Desktop/tictactoe/TicTacToe.h
+Player.h
+/Users/marlamunkh-achit/Desktop/tictactoe/Player.h
+stddef.h
+-
+
 /Users/marlamunkh-achit/Desktop/tictactoe/main.cpp
 iostream
 -
+TicTacToe.h
+/Users/marlamunkh-achit/Desktop/tictactoe/TicTacToe.h
 

@@ -80,6 +80,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/marlamunkh-achit/Desktop/tictactoe/Player.h">
+			<Option target="tictactoe"/>
+		</Unit>
+		<Unit filename="/Users/marlamunkh-achit/Desktop/tictactoe/TicTacToe.cpp">
+			<Option target="tictactoe"/>
+		</Unit>
+		<Unit filename="/Users/marlamunkh-achit/Desktop/tictactoe/TicTacToe.h">
+			<Option target="tictactoe"/>
+		</Unit>
 		<Unit filename="/Users/marlamunkh-achit/Desktop/tictactoe/main.cpp">
 			<Option target="tictactoe"/>
 		</Unit>
