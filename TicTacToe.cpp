@@ -2,14 +2,10 @@
 
 #include <iostream>
 
-
-TicTacToe::TicTacToe() {
-    for (size_t i = 0; i < BOARD_SIZE; ++i) {
-        for (size_t j = 0; j < BOARD_SIZE; ++j) {
-            board[i][j] = '-';
-        }
-    }
-}
+/*
+ * Constructor - builds the board with empty (-) characters
+ */
+TicTacToe::TicTacToe() { clearBoard(); }
 
 /*
  * printBoard():
@@ -67,14 +63,17 @@ size_t TicTacToe::gameResult() {
             return 2;
         }
     }
+
     for (size_t i = 0; i < BOARD_SIZE; ++i) {
         if (board[0][i] != '-' && board[0][i] == board[1][i] && board[1][i] == board[2][i]) {
             return 2;
         }
     }
+
     if (board[0][0] != '-' && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
         return 2;
     }
+
     if (board[0][2] != '-' && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
         return 2;
     }
@@ -210,14 +209,13 @@ void TicTacToe::placeChars(Player &playerOne, Player &playerTwo) {
 /*
  * assignChars(Player &playerOne, Player &playerTwo):
  *
+ * Assigns characters of two players by asking player 1 which char to choose and assigns the
+ * remaining one to player two.
  *
  */
 void TicTacToe::assignChars(Player &playerOne, Player &playerTwo) {
-    playerOne.setChar(chooseChar());
 
-    if (playerOne.getChar() == 'x') {
-        playerTwo.setChar('o');
-    } else {
-        playerTwo.setChar('x');
-    }
+    playerOne.setChar(chooseChar());
+    (playerOne.getChar() == 'x') ? playerTwo.setChar('o') : playerTwo.setChar('x');
+
 }

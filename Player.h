@@ -7,9 +7,9 @@
  */
 
 class Player {
-private:
-    char chosenChar;
-public:
-    void setChar(char input) { this->chosenChar = input;}
-    char getChar() { return chosenChar; }
+    private:
+        char chosenChar;
+    public:
+        void setChar(char input) { this->chosenChar = input;}
+        char getChar() { return chosenChar; }
 };

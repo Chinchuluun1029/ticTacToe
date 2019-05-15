@@ -3,6 +3,8 @@
 
 //TODO: headers and comments for all methods
 //TODO: replay option?
+//TODO: make play() method and call assign and place
+//todo: break down placeChars
 
 
 int main() {
