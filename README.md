@@ -23,7 +23,15 @@ To start the game, clone or download the repo, change current directory to repo,
 ### Gameplay
 
 The user is first asked to choose the character to play with, either X or O. The opposing player is
- assigned the other character. Then the players are
+ assigned the other character. 
+ 
+ #### Character display:
+
+- (-) Empty Slot
+- (X) Player element X
+- (O) Player element O 
+ 
+Then the players are
 asked to enter x and y coordinates on the board in turn currently displayed until the game is over by winning 
 or by a tie.
 <br/>
