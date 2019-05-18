@@ -8,6 +8,8 @@ simple characters to represent players' elements and an empty state.
 - To run the game, have the g++ compiler
 - To edit the game, have a suitable C++ IDE or text editor
 
+---
+
 ### Getting Started
 
 To start the game, clone or download the repo, change current directory to repo, and run the following command on the terminal:
