@@ -16,8 +16,7 @@ class TicTacToe {
     private:
 
         const static size_t BOARD_SIZE = 3; //Const variable of one length/size
-        char board[BOARD_SIZE][BOARD_SIZE];
-
+        char board[BOARD_SIZE][BOARD_SIZE]; //Two dimensional array to represent board
     public:
 
         //Constructor - builds the board with empty (-) characters
@@ -95,6 +94,7 @@ class TicTacToe {
          */
         void assignChars(Player &playerOne, Player &playerTwo);
 
+        void playGame(Player &playerOne, Player &playerTwo);
 };
 
 

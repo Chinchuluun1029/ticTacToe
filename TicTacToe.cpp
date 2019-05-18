@@ -219,3 +219,14 @@ void TicTacToe::assignChars(Player &playerOne, Player &playerTwo) {
     (playerOne.getChar() == 'x') ? playerTwo.setChar('o') : playerTwo.setChar('x');
 
 }
+
+
+
+void TicTacToe::playGame(Player &playerOne, Player &playerTwo) {
+
+    std::cout << "Welcome to Tic-Tac-Toe!\n" << std::endl;
+
+    assignChars(playerOne, playerTwo);
+    placeChars(playerOne, playerTwo);
+
+}
