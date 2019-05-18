@@ -27,9 +27,9 @@ The user is first asked to choose the character to play with, either X or O. The
 asked to enter x and y coordinates on the board in turn currently displayed until the game is over by winning 
 or by a tie.
 <br/>
-####Coordinate system:
+#### Coordinate system:
 
-e.g |( x, |y ):
+(x, y)|(x, y)|(x, y)
 --- | --- | ---
 0 0 | 0 1 | 0 2
 1 0 | 1 1 | 1 2
